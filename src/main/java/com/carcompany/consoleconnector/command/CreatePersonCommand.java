@@ -1,6 +1,5 @@
 package com.carcompany.consoleconnector.command;
 
-
 /**
  * @author Kevin
  * @version 1.0
@@ -8,18 +7,15 @@ package com.carcompany.consoleconnector.command;
  */
 public class CreatePersonCommand implements Command {
 
-	public CreatePersonCommand(){
+	public CreatePersonCommand() {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	/**
 	 * 
 	 * @param arguments
 	 */
-	public void excuteCommand(String[] arguments){
+	public void excuteCommand(String[] arguments) {
 
 	}
-}//end CreatePersonCommand
+}
