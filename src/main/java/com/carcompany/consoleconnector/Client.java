@@ -1,6 +1,5 @@
 package com.carcompany.consoleconnector;
 
-
 /**
  * @author Kevin
  * @version 1.0
@@ -8,11 +7,8 @@ package com.carcompany.consoleconnector;
  */
 public class Client {
 
-	public Client(){
-
+	public static void main(String[] args) {
+		
 	}
 
-	public void finalize() throws Throwable {
-
-	}
-}//end Client
+}

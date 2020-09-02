@@ -11,14 +11,11 @@ public class CarReservationServiceSingleton {
 
 	private static CarReservationService carReservationService;
 
-	public CarReservationServiceSingleton(){
+	public CarReservationServiceSingleton() {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
-	public static CarReservationService getSingleton(){
+	public static CarReservationService getSingleton() {
 		return null;
 	}
-}//end CarReservationServiceSingleton
+}

@@ -1,6 +1,5 @@
 package com.carcompany.consoleconnector.command;
 
-
 /**
  * @author Sebastian
  * @version 1.0
@@ -8,18 +7,15 @@ package com.carcompany.consoleconnector.command;
  */
 public class DeleteResourceCommand implements Command {
 
-	public DeleteResourceCommand(){
+	public DeleteResourceCommand() {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	/**
 	 * 
 	 * @param arguments
 	 */
-	public void excuteCommand(String[] arguments){
+	public void excuteCommand(String[] arguments) {
 
 	}
-}//end DeleteResourceCommand
+}

@@ -9,16 +9,11 @@ import com.carcompany.consoleconnector.command.Command;
  */
 public class Dispatcher {
 
-	public Command m_Command;
-
-	public Dispatcher(){
+	public Dispatcher() {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
-	public void evaluateCommand(){
+	public void evaluateCommand() {
 
 	}
 
@@ -26,7 +21,7 @@ public class Dispatcher {
 	 * 
 	 * @param commandEnumeration
 	 */
-	public void dispatchToCommand(CommandEnumeration commandEnumeration){
+	public void dispatchToCommand(CommandEnumeration commandEnumeration) {
 
 	}
-}//end Dispatcher
+}

@@ -1,7 +1,5 @@
 package com.carcompany.consoleconnector.command;
 
-import com.carcompany.consoleconnector.view.View;
-
 /**
  * @author Kevin
  * @version 1.0

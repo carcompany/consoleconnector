@@ -1,6 +1,5 @@
 package com.carcompany.consoleconnector;
 
-
 /**
  * @author Kevin
  * @version 1.0
@@ -9,20 +8,8 @@ package com.carcompany.consoleconnector;
 public abstract class Observable {
 
 	private Subscriber[] subscribers;
-	public Subscriber m_Subscriber;
 
-	public Observable(){
-
-	}
-
-	public void finalize() throws Throwable {
-
-	}
-	/**
-	 * 
-	 * @param subscriber
-	 */
-	public void register(Subscriber subscriber){
+	public Observable() {
 
 	}
 
@@ -30,11 +17,19 @@ public abstract class Observable {
 	 * 
 	 * @param subscriber
 	 */
-	public void unregister(Subscriber subscriber){
+	public void register(Subscriber subscriber) {
+
+	}
+
+	/**
+	 * 
+	 * @param subscriber
+	 */
+	public void unregister(Subscriber subscriber) {
 
 	}
 
 	protected void notifySubscribers() {
 
 	}
-}//end Observable
+}

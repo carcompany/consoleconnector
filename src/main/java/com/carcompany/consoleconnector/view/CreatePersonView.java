@@ -1,6 +1,5 @@
 package com.carcompany.consoleconnector.view;
 
-
 /**
  * @author Kevin
  * @version 1.0
@@ -8,18 +7,15 @@ package com.carcompany.consoleconnector.view;
  */
 public class CreatePersonView extends View {
 
-	public CreatePersonView(){
+	public CreatePersonView() {
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	public void print(){
+	public void print() {
 
 	}
 
-	public void update(){
+	public void update() {
 
 	}
-}//end CreatePersonView
+}

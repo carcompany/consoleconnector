@@ -1,6 +1,5 @@
 package com.carcompany.consoleconnector.command;
 
-
 /**
  * @author Sebastian
  * @version 1.0
@@ -8,18 +7,15 @@ package com.carcompany.consoleconnector.command;
  */
 public class CreateBookingCommand implements Command {
 
-	public CreateBookingCommand(){
+	public CreateBookingCommand() {
 
 	}
 
-	public void finalize() throws Throwable {
-
-	}
 	/**
 	 * 
 	 * @param arguments
 	 */
-	public void excuteCommand(String[] arguments){
+	public void excuteCommand(String[] arguments) {
 
 	}
-}//end CreateBookingCommand
+}

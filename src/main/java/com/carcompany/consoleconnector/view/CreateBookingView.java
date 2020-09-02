@@ -1,6 +1,5 @@
 package com.carcompany.consoleconnector.view;
 
-
 /**
  * @author Benjamin Esdor
  * @version 1.0
@@ -8,18 +7,15 @@ package com.carcompany.consoleconnector.view;
  */
 public class CreateBookingView extends View {
 
-	public CreateBookingView(){
+	public CreateBookingView() {
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
-	public void print(){
+	public void print() {
 
 	}
 
-	public void update(){
+	public void update() {
 
 	}
-}//end CreateBookingView
+}

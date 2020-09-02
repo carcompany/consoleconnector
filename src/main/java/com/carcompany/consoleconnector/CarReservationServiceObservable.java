@@ -13,45 +13,31 @@ public class CarReservationServiceObservable extends Observable implements CarRe
 
 	private CarReservationService carReservationService;
 
-	public CarReservationServiceObservable(){
+	public CarReservationServiceObservable() {
 
 	}
 
-	public void finalize() throws Throwable {
-		super.finalize();
-	}
 	/**
 	 * 
 	 * @param names
 	 */
-	public void createPerson(String... names){
+	public void createPerson(String... names) {
 
 	}
-
 
 	/**
 	 * 
 	 * @param personId
 	 */
-	public void deletePerson(int personId){
+	public void deletePerson(int personId) {
 
 	}
-
 
 	/**
 	 * 
 	 * @param resourceEnumeration
 	 */
-	public void createResource(ResourceEnumeration... resourceEnumeration){
-
-	}
-
-
-	/**
-	 * 
-	 * @param resourceId
-	 */
-	public void showResource(int resourceId){
+	public void createResource(ResourceEnumeration... resourceEnumeration) {
 
 	}
 
@@ -59,7 +45,15 @@ public class CarReservationServiceObservable extends Observable implements CarRe
 	 * 
 	 * @param resourceId
 	 */
-	public void deleteResource(int resourceId){
+	public void showResource(int resourceId) {
+
+	}
+
+	/**
+	 * 
+	 * @param resourceId
+	 */
+	public void deleteResource(int resourceId) {
 
 	}
 
@@ -67,11 +61,11 @@ public class CarReservationServiceObservable extends Observable implements CarRe
 	 * 
 	 * @param personId
 	 */
-	public void authenticatePerson(int personId){
+	public void authenticatePerson(int personId) {
 
 	}
 
-	public void showStatistics(){
+	public void showStatistics() {
 
 	}
 
@@ -79,11 +73,11 @@ public class CarReservationServiceObservable extends Observable implements CarRe
 	 * 
 	 * @param bookingId
 	 */
-	public void payBooking(int bookingId){
+	public void payBooking(int bookingId) {
 
 	}
 
-	public void showBookings(){
+	public void showBookings() {
 
 	}
 
@@ -93,7 +87,7 @@ public class CarReservationServiceObservable extends Observable implements CarRe
 	 * @param resourceId
 	 * @param language
 	 */
-	public void createBooking(int personId, int resourceId, Language language){
+	public void createBooking(int personId, int resourceId, Language language) {
 
 	}
-}//end CarReservationServiceObservable
+}

@@ -1,6 +1,5 @@
 package com.carcompany.consoleconnector;
 
-
 /**
  * @author Kevin
  * @version 1.0
