@@ -1,5 +1,7 @@
 package com.carcompany.consoleconnector;
 
+import java.util.ArrayList;
+
 /**
  * @author Kevin
  * @version 1.0
@@ -7,10 +9,10 @@ package com.carcompany.consoleconnector;
  */
 public abstract class Observable {
 
-	private Subscriber[] subscribers;
+	private ArrayList<Subscriber> subscribers;
 
 	public Observable() {
-
+		this.subscribers = new ArrayList<>();
 	}
 
 	/**
@@ -18,7 +20,7 @@ public abstract class Observable {
 	 * @param subscriber
 	 */
 	public void register(Subscriber subscriber) {
-
+		this.subscribers.add(subscriber);
 	}
 
 	/**
@@ -26,10 +28,12 @@ public abstract class Observable {
 	 * @param subscriber
 	 */
 	public void unregister(Subscriber subscriber) {
-
+		this.subscribers.remove(subscriber);
 	}
 
 	protected void notifySubscribers() {
-
+		subscribers.forEach((subscriber) -> {
+			subscriber.update();
+		});
 	}
 }
