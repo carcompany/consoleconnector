@@ -11,11 +11,11 @@ public class CarReservationServiceSingleton {
 
 	private static CarReservationService carReservationService;
 
-	public CarReservationServiceSingleton() {
-
-	}
-
 	public static CarReservationService getSingleton() {
-		return null;
+		if (carReservationService == null) {
+			carReservationService = new CarReservationServiceObservable();
+		}
+
+		return carReservationService;
 	}
 }
