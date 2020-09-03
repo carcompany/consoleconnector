@@ -1,6 +1,6 @@
 package com.carcompany.consoleconnector;
 
-import java.io.Console;
+import java.util.Scanner;
 
 import com.carcompany.consoleconnector.command.AuthenticatePersonCommand;
 import com.carcompany.consoleconnector.command.Command;
@@ -22,8 +22,8 @@ import com.carcompany.consoleconnector.command.ShowStatisticsCommand;
 public class Dispatcher {
 
 	public void evaluateCommand() {
-		Console console = System.console();
-		String dataInput = console.readLine();
+		Scanner scanner = new Scanner(System.in);
+		String dataInput = scanner.nextLine();
 		String[] arguments = dataInput.split(" ");
 
 		if(arguments.length > 0) {

@@ -9,7 +9,9 @@ public class Client {
 
 	public static void main(String[] args) {
 		Dispatcher dispatcher = new Dispatcher();
-		dispatcher.evaluateCommand();
+		while(true) {
+			dispatcher.evaluateCommand();
+		}
 	}
 
 }
