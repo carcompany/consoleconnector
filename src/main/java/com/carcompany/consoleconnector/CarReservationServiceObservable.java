@@ -1,8 +1,12 @@
 package com.carcompany.consoleconnector;
 
 import com.carcompany.carreservationservice.behaviour.CarReservationService;
-import com.carcompany.carreservationservice.structure.Booking.structure.Language;
-import com.carcompany.carreservationservice.structure.Resource.structure.ResourceEnumeration;
+import com.carcompany.carreservationservice.behaviour.CarReservationServiceImplementation;
+import com.carcompany.carreservationservice.structure.bookingservice.structure.Booking;
+import com.carcompany.carreservationservice.structure.bookingservice.structure.Language;
+import com.carcompany.carreservationservice.structure.personservice.structure.Person;
+import com.carcompany.carreservationservice.structure.resourceservice.structure.Resource;
+import com.carcompany.carreservationservice.structure.resourceservice.structure.ResourceEnumeration;
 
 /**
  * @author Kevin
@@ -14,15 +18,15 @@ public class CarReservationServiceObservable extends Observable implements CarRe
 	private CarReservationService carReservationService;
 
 	public CarReservationServiceObservable() {
-
+		carReservationService = new CarReservationServiceImplementation();
 	}
 
 	/**
 	 * 
-	 * @param names
+	 * @param parameters
 	 */
-	public void createPerson(String... names) {
-
+	public Person createPerson(String... parameters) {
+		return carReservationService.createPerson(parameters);
 	}
 
 	/**
@@ -30,31 +34,15 @@ public class CarReservationServiceObservable extends Observable implements CarRe
 	 * @param personId
 	 */
 	public void deletePerson(int personId) {
-
+		carReservationService.deletePerson(personId);
 	}
 
 	/**
 	 * 
 	 * @param resourceEnumeration
 	 */
-	public void createResource(ResourceEnumeration... resourceEnumeration) {
-
-	}
-
-	/**
-	 * 
-	 * @param resourceId
-	 */
-	public void showResource(int resourceId) {
-
-	}
-
-	/**
-	 * 
-	 * @param resourceId
-	 */
-	public void deleteResource(int resourceId) {
-
+	public Resource createResource(ResourceEnumeration... resourceEnumeration) {
+		return carReservationService.createResource(resourceEnumeration);
 	}
 
 	/**
@@ -62,7 +50,7 @@ public class CarReservationServiceObservable extends Observable implements CarRe
 	 * @param personId
 	 */
 	public void authenticatePerson(int personId) {
-
+		
 	}
 
 	public void showStatistics() {
@@ -78,7 +66,7 @@ public class CarReservationServiceObservable extends Observable implements CarRe
 	}
 
 	public void showBookings() {
-
+		
 	}
 
 	/**
@@ -87,7 +75,7 @@ public class CarReservationServiceObservable extends Observable implements CarRe
 	 * @param resourceId
 	 * @param language
 	 */
-	public void createBooking(int personId, int resourceId, Language language) {
-
+	public Booking createBooking(Person person, Resource resource, Language language) {
+		return carReservationService.createBooking(person, resource, language);
 	}
 }
