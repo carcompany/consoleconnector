@@ -1,12 +1,24 @@
 package com.carcompany.consoleconnector;
 
+import javax.security.sasl.AuthenticationException;
+
 import com.carcompany.carreservationservice.behaviour.CarReservationService;
 import com.carcompany.carreservationservice.behaviour.CarReservationServiceImplementation;
+import com.carcompany.carreservationservice.structure.authenticationservice.structure.credential.Credential;
+import com.carcompany.carreservationservice.structure.authenticationservice.structure.credential.CredentialEnumeration;
 import com.carcompany.carreservationservice.structure.bookingservice.structure.Booking;
 import com.carcompany.carreservationservice.structure.bookingservice.structure.Language;
+import com.carcompany.carreservationservice.structure.paymentservice.structure.PaymentType;
+import com.carcompany.carreservationservice.structure.paymentservice.structure.account.Account;
+import com.carcompany.carreservationservice.structure.paymentservice.structure.exception.UnsupportedPaymentTypeException;
 import com.carcompany.carreservationservice.structure.personservice.structure.Person;
+import com.carcompany.carreservationservice.structure.personservice.structure.exception.TooFewOrManyParametersForPersonCreationException;
 import com.carcompany.carreservationservice.structure.resourceservice.structure.Resource;
 import com.carcompany.carreservationservice.structure.resourceservice.structure.ResourceEnumeration;
+import com.carcompany.carreservationservice.structure.resourceservice.structure.exception.MoreThanOneDecoratableResourceException;
+import com.carcompany.carreservationservice.structure.resourceservice.structure.exception.NoDecoratableResourceException;
+import com.carcompany.carreservationservice.structure.statisticsservice.structure.ExternalPaymentServiceEnumeration;
+import com.carcompany.carreservationservice.structure.statisticsservice.structure.services.Statistic;
 
 /**
  * @author Kevin
@@ -15,67 +27,55 @@ import com.carcompany.carreservationservice.structure.resourceservice.structure.
  */
 public class CarReservationServiceObservable extends Observable implements CarReservationService {
 
+	private static CarReservationServiceObservable carReservationServiceObservable;
+
+	public static CarReservationServiceObservable getInstance() {
+		if (carReservationServiceObservable == null) {
+			carReservationServiceObservable = new CarReservationServiceObservable();
+		}
+
+		return carReservationServiceObservable;
+	}
+
 	private CarReservationService carReservationService;
 
 	public CarReservationServiceObservable() {
 		carReservationService = new CarReservationServiceImplementation();
 	}
 
-	/**
-	 * 
-	 * @param parameters
-	 */
 	public Person createPerson(String... parameters) {
 		return carReservationService.createPerson(parameters);
 	}
 
-	/**
-	 * 
-	 * @param personId
-	 */
-	public void deletePerson(int personId) {
-		carReservationService.deletePerson(personId);
-	}
-
-	/**
-	 * 
-	 * @param resourceEnumeration
-	 */
-	public Resource createResource(ResourceEnumeration... resourceEnumeration) {
+	public Resource createResource(ResourceEnumeration... resourceEnumeration)
+			throws MoreThanOneDecoratableResourceException, NoDecoratableResourceException {
 		return carReservationService.createResource(resourceEnumeration);
 	}
 
-	/**
-	 * 
-	 * @param personId
-	 */
-	public void authenticatePerson(int personId) {
-		
-	}
-
-	public void showStatistics() {
-
-	}
-
-	/**
-	 * 
-	 * @param bookingId
-	 */
-	public void payBooking(int bookingId) {
-
-	}
-
-	public void showBookings() {
-		
-	}
-
-	/**
-	 * 
-	 * @param personId
-	 * @param resourceId
-	 * @param language
-	 */
 	public Booking createBooking(Person person, Resource resource, Language language) {
 		return carReservationService.createBooking(person, resource, language);
+	}
+
+	@Override
+	public Account createAccount(Person person, CredentialEnumeration credentialEnumeration, Object secret,
+			PaymentType paymentType) throws TooFewOrManyParametersForPersonCreationException {
+		return carReservationService.createAccount(person, credentialEnumeration, secret, paymentType);
+	}
+
+	@Override
+	public Credential createCredential(CredentialEnumeration credentialEnumeration, Object secret) {
+		return carReservationService.createCredential(credentialEnumeration, secret);
+	}
+
+	@Override
+	public Booking payBooking(Booking booking, PaymentType paymentType, Account account, Credential credential)
+			throws AuthenticationException, UnsupportedPaymentTypeException {
+		return carReservationService.payBooking(booking, paymentType, account, credential);
+	}
+
+	@Override
+	public Statistic showStatistics(Language language,
+			ExternalPaymentServiceEnumeration externalPaymentServiceEnumeration) {
+		return carReservationService.showStatistics(language, externalPaymentServiceEnumeration);
 	}
 }

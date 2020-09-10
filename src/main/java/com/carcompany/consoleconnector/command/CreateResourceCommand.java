@@ -7,15 +7,7 @@ package com.carcompany.consoleconnector.command;
  */
 public class CreateResourceCommand implements Command {
 
-	public CreateResourceCommand() {
-
-	}
-
-	/**
-	 * 
-	 * @param arguments
-	 */
-	public void excuteCommand(String[] arguments) {
+	public void executeCommand(String[] arguments) {
 
 	}
 }

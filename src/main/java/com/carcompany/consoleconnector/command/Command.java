@@ -11,6 +11,6 @@ public interface Command {
 	 * 
 	 * @param arguments
 	 */
-	public void excuteCommand(String[] arguments);
+	public void executeCommand(String[] arguments);
 
 }

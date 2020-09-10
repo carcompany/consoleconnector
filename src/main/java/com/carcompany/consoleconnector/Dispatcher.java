@@ -1,5 +1,7 @@
 package com.carcompany.consoleconnector;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import com.carcompany.consoleconnector.command.AuthenticatePersonCommand;
@@ -11,8 +13,8 @@ import com.carcompany.consoleconnector.command.DeletePersonCommand;
 import com.carcompany.consoleconnector.command.DeleteResourceCommand;
 import com.carcompany.consoleconnector.command.PayBookingCommand;
 import com.carcompany.consoleconnector.command.ShowBookingsCommand;
-import com.carcompany.consoleconnector.command.ShowResourceCommand;
 import com.carcompany.consoleconnector.command.ShowStatisticsCommand;
+import com.carcompany.consoleconnector.exception.ArgumentsException;
 
 /**
  * @author Kevin
@@ -23,13 +25,16 @@ public class Dispatcher {
 
 	public void evaluateCommand() {
 		Scanner scanner = new Scanner(System.in);
-		String dataInput = scanner.nextLine();
-		String[] arguments = dataInput.split(" ");
+		System.out.print("Slotos@CarCompany ⛺️ % ");
 
-		if(arguments.length > 0) {
+		String dataInput = scanner.nextLine();
+		ArrayList<String> arguments = new ArrayList<String>(Arrays.asList(dataInput.split(" ")));
+
+		if (arguments.size() > 0) {
 			try {
-				dispatchToCommand(CommandEnumeration.valueOf(arguments[0]), arguments);
-			} catch(IllegalArgumentException e) {
+				String enumerationString = arguments.remove(0);
+				dispatchToCommand(CommandEnumeration.valueOf(enumerationString), arguments.toArray(String[]::new));
+			} catch (IllegalArgumentException e) {
 				System.out.println("Error: Command does not exist");
 			}
 		}
@@ -42,7 +47,7 @@ public class Dispatcher {
 	public void dispatchToCommand(CommandEnumeration commandEnumeration, String[] arguments) {
 		Command command = null;
 
-		switch(commandEnumeration) {
+		switch (commandEnumeration) {
 			case CREATE_BOOKING:
 				command = new CreateBookingCommand();
 				break;
@@ -67,14 +72,15 @@ public class Dispatcher {
 			case SHOW_BOOKINGS:
 				command = new ShowBookingsCommand();
 				break;
-			case SHOW_RESOURCE:
-				command = new ShowResourceCommand();
-				break;
 			case SHOW_STATISTICS:
 				command = new ShowStatisticsCommand();
 				break;
 		}
 
-		command.excuteCommand(arguments);
+		try {
+			command.executeCommand(arguments);
+		} catch (ArgumentsException err) {
+			System.out.println("Arguments error: " + err.getMessage());
+		}
 	}
 }

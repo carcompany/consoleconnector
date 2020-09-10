@@ -1,5 +1,11 @@
 package com.carcompany.consoleconnector.command;
 
+import com.carcompany.carreservationservice.structure.personservice.structure.Person;
+import com.carcompany.consoleconnector.CarReservationServiceObservable;
+import com.carcompany.consoleconnector.exception.ArgumentsException;
+import com.carcompany.consoleconnector.view.CreatePersonView;
+import com.carcompany.consoleconnector.view.View;
+
 /**
  * @author Kevin
  * @version 1.0
@@ -7,15 +13,13 @@ package com.carcompany.consoleconnector.command;
  */
 public class CreatePersonCommand implements Command {
 
-	public CreatePersonCommand() {
-
-	}
-
-	/**
-	 * 
-	 * @param arguments
-	 */
-	public void excuteCommand(String[] arguments) {
-
+	public void executeCommand(String[] arguments) {
+		if (arguments.length > 0 && arguments.length <= 2) {
+			Person person = CarReservationServiceObservable.getInstance().createPerson(arguments);
+			View view = new CreatePersonView(person);
+			view.print();
+		} else
+			throw new ArgumentsException(
+					String.format("Two or one argument(s) are required. Got %s arguments.", arguments.length));
 	}
 }
