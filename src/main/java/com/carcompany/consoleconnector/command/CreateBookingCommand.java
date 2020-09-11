@@ -5,9 +5,10 @@ package com.carcompany.consoleconnector.command;
  * @version 1.0
  * @created 28-Aug-2020 17:10:42
  */
-public class CreateBookingCommand implements Command {
+public class CreateBookingCommand extends Command {
 
 	public CreateBookingCommand() {
+		super();
 
 	}
 
@@ -16,6 +17,8 @@ public class CreateBookingCommand implements Command {
 	 * @param arguments
 	 */
 	public void executeCommand(String[] arguments) {
+
+
 
 	}
 }

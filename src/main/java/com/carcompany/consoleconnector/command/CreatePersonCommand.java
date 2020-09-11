@@ -11,7 +11,8 @@ import com.carcompany.consoleconnector.view.View;
  * @version 1.0
  * @created 28-Aug-2020 17:10:43
  */
-public class CreatePersonCommand implements Command {
+public class CreatePersonCommand extends Command {
+	
 
 	public void executeCommand(String[] arguments) {
 		if (arguments.length > 0 && arguments.length <= 2) {

@@ -5,7 +5,7 @@ package com.carcompany.consoleconnector.command;
  * @version 1.0
  * @created 28-Aug-2020 17:10:44
  */
-public class DeletePersonCommand implements Command {
+public class DeletePersonCommand extends Command {
 
 	public DeletePersonCommand() {
 
