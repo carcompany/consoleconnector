@@ -28,14 +28,23 @@ public class Clipboard {
 
     }
 
-
+    
     public Object retrieve(String key){
         Object object = map.get(key);
         map.remove(key);
         return object;
     }
-    public void store(String key, Object object){
-        map.put(key, object);
+
+    public Object get(String key){
+
+        return object = map.get(key);
+
+
+    }
+    public String store(String key, Object object){
+
+
+        return null;
     }
 
 
