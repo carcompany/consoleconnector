@@ -1,6 +1,5 @@
 package com.carcompany.consoleconnector.command;
 
-import com.carcompany.carreservationservice.behaviour.CarReservationService;
 import com.carcompany.consoleconnector.CarReservationServiceObservable;
 import com.carcompany.consoleconnector.exception.ArgumentsException;
 import com.carcompany.consoleconnector.view.DeletePersonView;
@@ -26,6 +25,7 @@ public class DeletePersonCommand extends Command {
 	public void executeCommand(String[] arguments) throws NumberFormatException, Exception {
 
 		if (arguments.length == 1) {
+
 			CarReservationServiceObservable.getInstance().deletePerson(Integer.parseInt(arguments[0]));
 			View view = new DeletePersonView(arguments[0]);
 			view.print();

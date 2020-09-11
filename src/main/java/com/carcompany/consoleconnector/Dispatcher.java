@@ -3,8 +3,8 @@ package com.carcompany.consoleconnector;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import com.carcompany.consoleconnector.command.AuthenticatePersonCommand;
 import com.carcompany.consoleconnector.command.Command;
+import com.carcompany.consoleconnector.command.CreateAccountCommand;
 import com.carcompany.consoleconnector.command.CreateBookingCommand;
 import com.carcompany.consoleconnector.command.CreatePersonCommand;
 import com.carcompany.consoleconnector.command.CreateResourceCommand;
@@ -47,9 +47,6 @@ public class Dispatcher {
 			case CREATE_BOOKING:
 				command = new CreateBookingCommand();
 				break;
-			case AUTHENTICATE_PERSON:
-				command = new AuthenticatePersonCommand();
-				break;
 			case CREATE_PERSON:
 				command = new CreatePersonCommand();
 				break;
@@ -70,6 +67,9 @@ public class Dispatcher {
 				break;
 			case LIST_CLIPBOARD:
 				command = new ListClipboardCommand();
+				break;
+			case CREATE_ACCOUNT:
+				command = new CreateAccountCommand();
 				break;
 			default:
 				break;
