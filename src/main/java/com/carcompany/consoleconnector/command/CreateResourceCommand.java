@@ -37,7 +37,7 @@ public class CreateResourceCommand extends Command {
 		View view = new CreateResourceView(resource);
 
 		view.print();
-		view.update();
+		store(resource);
 
 
 		

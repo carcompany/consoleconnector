@@ -39,7 +39,7 @@ public class CreateBookingCommand extends Command {
 			View view = new CreateBookingView(booking);
 
 			view.print();
-			view.update();
+			store(booking);
 
 		}
 

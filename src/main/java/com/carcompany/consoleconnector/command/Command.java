@@ -21,5 +21,11 @@ public abstract class Command {
 	 * @param arguments
 	 */
 	public abstract void executeCommand(String[] arguments) throws Exception;
+	
+	public void store(Object object){
+		System.out.println("RESOURCE STORED AS: " + clipboard.store(object));
+	 	System.out.println("USE THE ID AFTER THE : TO REFERENCE THE OBJECT IN COMMANDS");
+
+	}
 
 }
