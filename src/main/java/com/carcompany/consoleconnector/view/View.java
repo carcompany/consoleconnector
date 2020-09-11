@@ -11,7 +11,7 @@ import com.carcompany.consoleconnector.Subscriber;
 public abstract class View implements Subscriber {
 
 
-	private Clipboard clipboard;
+	protected Clipboard clipboard;
 
 	public View() {
 

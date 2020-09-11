@@ -9,7 +9,7 @@ import com.carcompany.consoleconnector.Clipboard;
  */
 public abstract class Command {
 
-	private Clipboard clipboard;
+	protected Clipboard clipboard;
 
 
 	Command(){
