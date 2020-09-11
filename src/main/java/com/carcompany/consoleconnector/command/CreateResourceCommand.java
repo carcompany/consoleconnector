@@ -5,7 +5,7 @@ package com.carcompany.consoleconnector.command;
  * @version 1.0
  * @created 28-Aug-2020 17:10:43
  */
-public class CreateResourceCommand implements Command {
+public class CreateResourceCommand extends Command {
 
 	public void executeCommand(String[] arguments) {
 

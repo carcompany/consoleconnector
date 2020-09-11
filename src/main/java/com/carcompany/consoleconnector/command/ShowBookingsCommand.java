@@ -5,7 +5,7 @@ package com.carcompany.consoleconnector.command;
  * @version 1.0
  * @created 28-Aug-2020 17:10:53
  */
-public class ShowBookingsCommand implements Command {
+public class ShowBookingsCommand extends Command {
 
 	public ShowBookingsCommand() {
 

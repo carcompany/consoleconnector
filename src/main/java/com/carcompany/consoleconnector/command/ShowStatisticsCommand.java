@@ -5,7 +5,7 @@ package com.carcompany.consoleconnector.command;
  * @version 1.0
  * @created 28-Aug-2020 17:10:54
  */
-public class ShowStatisticsCommand implements Command {
+public class ShowStatisticsCommand extends Command {
 
 	public ShowStatisticsCommand() {
 

@@ -5,7 +5,7 @@ package com.carcompany.consoleconnector.command;
  * @version 1.0
  * @created 28-Aug-2020 17:10:35
  */
-public class AuthenticatePersonCommand implements Command {
+public class AuthenticatePersonCommand extends Command {
 
 	public AuthenticatePersonCommand() {
 
