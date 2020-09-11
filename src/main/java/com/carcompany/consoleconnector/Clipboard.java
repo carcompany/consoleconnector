@@ -42,6 +42,7 @@ public class Clipboard {
 
     }
     public String store(Object object){
+        
 
         int index = 1;
 
@@ -55,12 +56,12 @@ public class Clipboard {
                 return object.getClass().getName() + ":" + index;
             }
 
-        }
+        }   
+    }
 
 
-
-
-        
+    public Map getMap(){
+        return this.map;
     }
 
 
