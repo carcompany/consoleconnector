@@ -1,5 +1,7 @@
 package com.carcompany.consoleconnector.view;
 
+import com.carcompany.carreservationservice.structure.bookingservice.structure.Booking;
+
 /**
  * @author Benjamin Esdor
  * @version 1.0
@@ -7,11 +9,20 @@ package com.carcompany.consoleconnector.view;
  */
 public class PayBookingView extends View {
 
-	public PayBookingView() {
+	private Booking paidBooking;
+
+	public PayBookingView(Booking paidBooking) {
+
+		this.paidBooking = paidBooking;
+
 
 	}
 
 	public void print() {
+
+		System.out.println("–= BOOKING PAID =–");
+
+
 
 	}
 
