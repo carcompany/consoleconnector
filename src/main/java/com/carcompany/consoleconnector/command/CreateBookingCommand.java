@@ -8,6 +8,7 @@ import com.carcompany.carreservationservice.structure.personservice.structure.Pe
 import com.carcompany.carreservationservice.structure.resourceservice.structure.Resource;
 import com.carcompany.carreservationservice.structure.resourceservice.structure.ResourceEnumeration;
 import com.carcompany.consoleconnector.CarReservationServiceObservable;
+import com.carcompany.consoleconnector.exception.ArgumentsException;
 import com.carcompany.consoleconnector.view.CreateBookingView;
 import com.carcompany.consoleconnector.view.View;
 
@@ -50,6 +51,9 @@ public class CreateBookingCommand extends Command {
 			View view = new CreateBookingView(booking);
 
 			view.print();
+		} else {
+			throw new ArgumentsException(
+					String.format("Three arguments are required. Got %s arguments.", arguments.length));
 		}
 	}
 }

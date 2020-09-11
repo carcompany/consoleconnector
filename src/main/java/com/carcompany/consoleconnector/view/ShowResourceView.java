@@ -1,5 +1,7 @@
 package com.carcompany.consoleconnector.view;
 
+import com.carcompany.carreservationservice.structure.resourceservice.structure.Resource;
+
 /**
  * @author Benjamin Esdor
  * @version 1.0
@@ -7,11 +9,17 @@ package com.carcompany.consoleconnector.view;
  */
 public class ShowResourceView extends View {
 
-	public ShowResourceView() {
+	private Resource resource;
+
+	public ShowResourceView(Resource resource) {
+
+		this.resource = resource;
 
 	}
 
 	public void print() {
+
+		System.out.println("PRICE: " + resource.getPrice());
 
 	}
 
