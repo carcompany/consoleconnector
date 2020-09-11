@@ -22,14 +22,16 @@ public class DeletePersonCommand extends Command {
 	 * @throws Exception
 	 * @throws NumberFormatException
 	 */
-	public void executeCommand(String[] arguments) throws Exception {
+	public void executeCommand(String[] arguments) throws NumberFormatException, Exception {
 
-		if(arguments.length == 1){
+		if (arguments.length == 1) {
+
 			CarReservationServiceObservable.getInstance().deletePerson(Integer.parseInt(arguments[0]));
 			View view = new DeletePersonView(arguments[0]);
 			view.print();
-		} else throw new ArgumentsException(
-			String.format("One argument is required. Got %s arguments.", arguments.length));
+		} else
+			throw new ArgumentsException(
+					String.format("One argument is required. Got %s arguments.", arguments.length));
 
 	}
 }

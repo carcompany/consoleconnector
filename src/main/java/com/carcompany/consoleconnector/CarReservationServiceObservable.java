@@ -1,5 +1,7 @@
 package com.carcompany.consoleconnector;
 
+import java.util.Map;
+
 import javax.security.sasl.AuthenticationException;
 
 import com.carcompany.carreservationservice.behaviour.CarReservationService;
@@ -44,32 +46,38 @@ public class CarReservationServiceObservable extends Observable implements CarRe
 	}
 
 	public Person createPerson(String... parameters) {
+		notifySubscribers();
 		return carReservationService.createPerson(parameters);
 	}
 
 	public Resource createResource(ResourceEnumeration... resourceEnumeration)
 			throws MoreThanOneDecoratableResourceException, NoDecoratableResourceException {
+		notifySubscribers();
 		return carReservationService.createResource(resourceEnumeration);
 	}
 
 	public Booking createBooking(Person person, Resource resource, Language language) {
+		notifySubscribers();
 		return carReservationService.createBooking(person, resource, language);
 	}
 
 	@Override
 	public Account createAccount(Person person, CredentialEnumeration credentialEnumeration, Object secret,
 			PaymentType paymentType) throws TooFewOrManyParametersForPersonCreationException {
+		notifySubscribers();
 		return carReservationService.createAccount(person, credentialEnumeration, secret, paymentType);
 	}
 
 	@Override
 	public Credential createCredential(CredentialEnumeration credentialEnumeration, Object secret) {
+		notifySubscribers();
 		return carReservationService.createCredential(credentialEnumeration, secret);
 	}
 
 	@Override
 	public Booking payBooking(Booking booking, PaymentType paymentType, Account account, Credential credential)
 			throws AuthenticationException, UnsupportedPaymentTypeException {
+		notifySubscribers();
 		return carReservationService.payBooking(booking, paymentType, account, credential);
 	}
 
@@ -77,5 +85,26 @@ public class CarReservationServiceObservable extends Observable implements CarRe
 	public Statistic showStatistics(Language language,
 			ExternalPaymentServiceEnumeration externalPaymentServiceEnumeration) {
 		return carReservationService.showStatistics(language, externalPaymentServiceEnumeration);
+	}
+
+	@Override
+	public void deletePerson(int id) throws Exception {
+		notifySubscribers();
+		carReservationService.deletePerson(id);
+	}
+
+	@Override
+	public Booking showBooking(int id) {
+		return carReservationService.showBooking(id);
+	}
+
+	@Override
+	public Map<Integer, Booking> showBookings() {
+		return carReservationService.showBookings();
+	}
+
+	@Override
+	public Person showPerson(int id) throws Exception {
+		return carReservationService.showPerson(id);
 	}
 }

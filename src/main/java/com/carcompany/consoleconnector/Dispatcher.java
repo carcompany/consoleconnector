@@ -79,7 +79,7 @@ public class Dispatcher {
 			command.executeCommand(arguments);
 		} catch (ArgumentsException err) {
 			System.out.println("Arguments error: " + err.getMessage());
-		} catch (Exception err){
+		} catch (Exception err) {
 			System.out.println("Exception error: " + err.getMessage());
 		}
 	}
