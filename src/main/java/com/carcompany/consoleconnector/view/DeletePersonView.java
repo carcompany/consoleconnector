@@ -7,12 +7,20 @@ package com.carcompany.consoleconnector.view;
  */
 public class DeletePersonView extends View {
 
-	public DeletePersonView() {
+	private String identifier;
+
+	public DeletePersonView(String id) {
+
+		this.identifier = id;
+
+		
+
 
 	}
 
 	public void print() {
-
+		System.out.println("–= PERSON DELETED =–");
+		System.out.println("ID: " + this.identifier);
 	}
 
 	public void update() {
