@@ -21,6 +21,7 @@ public class CreatePersonCommand extends Command {
 
 			View view = new CreatePersonView(person);
 			view.print();
+			view.update();
 		} else
 			throw new ArgumentsException(
 					String.format("Two or one argument(s) are required. Got %s arguments.", arguments.length));
