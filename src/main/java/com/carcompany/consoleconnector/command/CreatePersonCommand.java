@@ -13,15 +13,12 @@ import com.carcompany.consoleconnector.view.View;
  */
 public class CreatePersonCommand extends Command {
 
-
 	public void executeCommand(String[] arguments) {
 		if (arguments.length > 0 && arguments.length <= 2) {
 			Person person = CarReservationServiceObservable.getInstance().createPerson(arguments);
-			
 
 			View view = new CreatePersonView(person);
 			view.print();
-			store(person);
 		} else
 			throw new ArgumentsException(
 					String.format("Two or one argument(s) are required. Got %s arguments.", arguments.length));

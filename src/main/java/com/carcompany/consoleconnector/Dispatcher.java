@@ -2,7 +2,6 @@ package com.carcompany.consoleconnector;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 
 import com.carcompany.consoleconnector.command.AuthenticatePersonCommand;
 import com.carcompany.consoleconnector.command.Command;
@@ -80,7 +79,7 @@ public class Dispatcher {
 			command.executeCommand(arguments);
 		} catch (ArgumentsException err) {
 			System.out.println("Arguments error: " + err.getMessage());
-		} catch (Exception err){
+		} catch (Exception err) {
 			System.out.println("Exception error: " + err.getMessage());
 		}
 	}

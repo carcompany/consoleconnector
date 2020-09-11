@@ -1,5 +1,9 @@
 package com.carcompany.consoleconnector.command;
 
+import com.carcompany.consoleconnector.CarReservationServiceObservable;
+import com.carcompany.consoleconnector.view.ShowBookingsView;
+import com.carcompany.consoleconnector.view.View;
+
 /**
  * @author Sebastian
  * @version 1.0
@@ -11,11 +15,8 @@ public class ShowBookingsCommand extends Command {
 
 	}
 
-	/**
-	 * 
-	 * @param arguments
-	 */
 	public void executeCommand(String[] arguments) {
-
+		View view = new ShowBookingsView(CarReservationServiceObservable.getInstance().showBookings());
+		view.print();
 	}
 }
