@@ -2,9 +2,7 @@ package com.carcompany.consoleconnector;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
 
-import com.carcompany.consoleconnector.command.AuthenticatePersonCommand;
 import com.carcompany.consoleconnector.command.Command;
 import com.carcompany.consoleconnector.command.CreateAccountCommand;
 import com.carcompany.consoleconnector.command.CreateBookingCommand;
@@ -48,9 +46,6 @@ public class Dispatcher {
 		switch (commandEnumeration) {
 			case CREATE_BOOKING:
 				command = new CreateBookingCommand();
-				break;
-			case AUTHENTICATE_PERSON:
-				command = new AuthenticatePersonCommand();
 				break;
 			case CREATE_PERSON:
 				command = new CreatePersonCommand();
