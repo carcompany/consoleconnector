@@ -23,10 +23,7 @@ import com.carcompany.consoleconnector.exception.ArgumentsException;
 public class Dispatcher {
 
 	public void evaluateCommand() {
-		Scanner scanner = new Scanner(System.in);
-		System.out.print("Slotos@CarCompany ⛺️ % ");
-
-		String dataInput = scanner.nextLine();
+		String dataInput = ConsoleWrapper.getInstance().getInput();
 		ArrayList<String> arguments = new ArrayList<String>(Arrays.asList(dataInput.split(" ")));
 
 		if (arguments.size() > 0) {
@@ -77,6 +74,8 @@ public class Dispatcher {
 			command.executeCommand(arguments);
 		} catch (ArgumentsException err) {
 			System.out.println("Arguments error: " + err.getMessage());
+		} catch (Exception err){
+			System.out.println("Exception error: " + err.getMessage());
 		}
 	}
 }

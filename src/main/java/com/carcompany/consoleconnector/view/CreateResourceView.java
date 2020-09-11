@@ -24,9 +24,7 @@ public class CreateResourceView extends View {
 	}
 
 	public void update() {
-
-	 System.out.println("RESOURCE STORED AS: " + clipboard.store(resource));
-	 System.out.println("USE THE ID AFTER THE : TO REFERENCE THE OBJECT IN COMMANDS");
+		store(resource);
 
 	}
 }
