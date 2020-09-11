@@ -20,6 +20,6 @@ public abstract class Command {
 	 * 
 	 * @param arguments
 	 */
-	public abstract void executeCommand(String[] arguments);
+	public abstract void executeCommand(String[] arguments) throws Exception;
 
 }

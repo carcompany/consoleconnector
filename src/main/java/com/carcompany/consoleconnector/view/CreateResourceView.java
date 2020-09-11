@@ -1,5 +1,7 @@
 package com.carcompany.consoleconnector.view;
 
+import com.carcompany.carreservationservice.structure.resourceservice.structure.Resource;
+
 /**
  * @author Benjamin Esdor
  * @version 1.0
@@ -7,15 +9,25 @@ package com.carcompany.consoleconnector.view;
  */
 public class CreateResourceView extends View {
 
-	public CreateResourceView() {
+	private Resource resource;
+
+	public CreateResourceView(Resource resource) {
+
+		this.resource = resource;
 
 	}
 
 	public void print() {
+		System.out.println("–= RESOURCE CREATED =–");
+		System.out.println("PRICE: " + resource.getPrice());
 
 	}
 
 	public void update() {
+
+		clipboard.store("com.carcompany.Resource" + 1, resource);
+		System.out.println("RESOURCE ADDED TO CLIPBOARD AS:");
+		System.out.println("com.carcompany.Resource" + 1);
 
 	}
 }
