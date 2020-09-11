@@ -22,10 +22,4 @@ public abstract class View implements Subscriber {
 	public abstract void print();
 
 	public abstract void update();
-
-	public void store(Object object){
-		System.out.println("RESOURCE STORED AS: " + clipboard.store(object));
-	 	System.out.println("USE THE ID AFTER THE : TO REFERENCE THE OBJECT IN COMMANDS");
-
-	}
 }
