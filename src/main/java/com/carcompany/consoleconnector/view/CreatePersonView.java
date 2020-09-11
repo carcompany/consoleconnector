@@ -31,8 +31,6 @@ public class CreatePersonView extends View {
 
 	public void update() {
 
-		store(person);
-
 
 
 	}

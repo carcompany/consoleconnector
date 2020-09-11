@@ -1,7 +1,5 @@
 package com.carcompany.consoleconnector.view;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -26,13 +24,12 @@ public class ListClipboardView extends View {
         }
         
 
-    }
 
     @Override
     public void update() {
         // TODO Auto-generated method stub
 
     }
-    
-    
 }
+    
+

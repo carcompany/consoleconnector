@@ -24,7 +24,6 @@ public class CreateResourceView extends View {
 	}
 
 	public void update() {
-		store(resource);
 
 	}
 }

@@ -39,7 +39,6 @@ public class CreateBookingView extends View {
 
 	public void update() {
 
-		store(booking);
 
 	}
 }
