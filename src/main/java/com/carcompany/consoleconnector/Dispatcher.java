@@ -10,7 +10,6 @@ import com.carcompany.consoleconnector.command.CreateBookingCommand;
 import com.carcompany.consoleconnector.command.CreatePersonCommand;
 import com.carcompany.consoleconnector.command.CreateResourceCommand;
 import com.carcompany.consoleconnector.command.DeletePersonCommand;
-import com.carcompany.consoleconnector.command.DeleteResourceCommand;
 import com.carcompany.consoleconnector.command.PayBookingCommand;
 import com.carcompany.consoleconnector.command.ShowBookingsCommand;
 import com.carcompany.consoleconnector.command.ShowStatisticsCommand;
@@ -62,9 +61,6 @@ public class Dispatcher {
 				break;
 			case DELETE_PERSON:
 				command = new DeletePersonCommand();
-				break;
-			case DELETE_RESOURCE:
-				command = new DeleteResourceCommand();
 				break;
 			case PAY_BOOKING:
 				command = new PayBookingCommand();
