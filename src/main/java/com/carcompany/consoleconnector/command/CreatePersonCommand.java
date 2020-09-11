@@ -2,7 +2,6 @@ package com.carcompany.consoleconnector.command;
 
 import com.carcompany.carreservationservice.structure.personservice.structure.Person;
 import com.carcompany.consoleconnector.CarReservationServiceObservable;
-import com.carcompany.consoleconnector.Clipboard;
 import com.carcompany.consoleconnector.exception.ArgumentsException;
 import com.carcompany.consoleconnector.view.CreatePersonView;
 import com.carcompany.consoleconnector.view.View;
