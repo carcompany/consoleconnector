@@ -52,7 +52,7 @@ public class Clipboard {
             } else {
                 map.put(object.getClass().getName() + ":" + index, object);
     
-                return null;
+                return object.getClass().getName() + ":" + index;
             }
 
         }
