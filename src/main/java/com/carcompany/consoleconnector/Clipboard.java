@@ -37,14 +37,30 @@ public class Clipboard {
 
     public Object get(String key){
 
-        return object = map.get(key);
+        return map.get(key);
 
 
     }
-    public String store(String key, Object object){
+    public String store(Object object){
+
+        int index = 1;
+
+        while(true){
+
+            if(map.containsKey(object.getClass().getName() + ":" + index )){
+                index++;
+            } else {
+                map.put(object.getClass().getName() + ":" + index, object);
+    
+                return null;
+            }
+
+        }
 
 
-        return null;
+
+
+        
     }
 
 
