@@ -12,6 +12,7 @@ import com.carcompany.consoleconnector.command.DeletePersonCommand;
 import com.carcompany.consoleconnector.command.ListClipboardCommand;
 import com.carcompany.consoleconnector.command.PayBookingCommand;
 import com.carcompany.consoleconnector.command.ShowBookingsCommand;
+import com.carcompany.consoleconnector.command.ShowResourceCommand;
 import com.carcompany.consoleconnector.command.ShowStatisticsCommand;
 import com.carcompany.consoleconnector.exception.ArgumentsException;
 
@@ -61,6 +62,9 @@ public class Dispatcher {
 				break;
 			case SHOW_BOOKINGS:
 				command = new ShowBookingsCommand();
+				break;
+			case SHOW_RESOURCE:
+				command = new ShowResourceCommand();
 				break;
 			case SHOW_STATISTICS:
 				command = new ShowStatisticsCommand();

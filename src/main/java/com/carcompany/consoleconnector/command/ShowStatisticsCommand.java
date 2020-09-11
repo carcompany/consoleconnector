@@ -4,6 +4,7 @@ import com.carcompany.carreservationservice.structure.bookingservice.structure.L
 import com.carcompany.carreservationservice.structure.statisticsservice.structure.ExternalPaymentServiceEnumeration;
 import com.carcompany.carreservationservice.structure.statisticsservice.structure.services.Statistic;
 import com.carcompany.consoleconnector.CarReservationServiceObservable;
+import com.carcompany.consoleconnector.exception.ArgumentsException;
 import com.carcompany.consoleconnector.view.ShowStatisticsView;
 import com.carcompany.consoleconnector.view.View;
 
@@ -30,6 +31,9 @@ public class ShowStatisticsCommand extends Command {
 			View view = new ShowStatisticsView(statistic);
 			view.print();
 
+		} else {
+			throw new ArgumentsException(
+					String.format("Two arguments are required. Got %s arguments.", arguments.length));
 		}
 
 	}
