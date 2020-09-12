@@ -33,8 +33,7 @@ public class PayBookingCommand extends Command {
 	 */
 	public void executeCommand(String[] arguments) throws Exception {
 
-
-		if(arguments.length == 3){
+		if (arguments.length == 3) {
 
 			Booking booking = CarReservationServiceObservable.getInstance().showBooking(Integer.parseInt(arguments[0]));
 			PaymentType paymentType = PaymentType.valueOf(arguments[1]);
@@ -51,30 +50,28 @@ public class PayBookingCommand extends Command {
 					account = (GoogleAccount) clipboard.get(GoogleAccount.class.getName() + ":" + arguments[2]);
 					break;
 				case PAYPAL:
-				account = (PayPalAccount) clipboard.get(PayPalAccount.class.getName() + ":" + arguments[2]);
+					account = (PayPalAccount) clipboard.get(PayPalAccount.class.getName() + ":" + arguments[2]);
 					break;
 				default:
 					throw new Exception("PaymentType is not supported!");
 			}
 
-			String secret = ConsoleWrapper.getInstance().ask4Input("Please enter your password.");
+			String secret = ConsoleWrapper.getInstance().ask4Password("Please enter your password");
 
-			Credential credential = CarReservationServiceObservable.getInstance().createCredential(CredentialEnumeration.PASSWORD, secret);
+			Credential credential = CarReservationServiceObservable.getInstance()
+					.createCredential(CredentialEnumeration.PASSWORD, secret);
 
-			if(account != null) {
-				
-				Booking paidBooking = CarReservationServiceObservable.getInstance().payBooking(booking, paymentType, account, credential);
-				
-				if(paidBooking != null){
+			if (account != null) {
+
+				Booking paidBooking = CarReservationServiceObservable.getInstance().payBooking(booking, paymentType,
+						account, credential);
+
+				if (paidBooking != null) {
 					View view = new PayBookingView(paidBooking);
-					view.print();		
-			}
-
-
+					view.print();
+				}
 
 			}
-		
-
 
 		} else {
 			throw new ArgumentsException(

@@ -2,7 +2,7 @@ package com.carcompany.consoleconnector.command;
 
 import com.carcompany.carreservationservice.structure.bookingservice.structure.Language;
 import com.carcompany.carreservationservice.structure.statisticsservice.structure.ExternalPaymentServiceEnumeration;
-import com.carcompany.carreservationservice.structure.statisticsservice.structure.services.Statistic;
+import com.carcompany.carreservationservice.structure.statisticsservice.structure.services.ExternalPaymentStatistic;
 import com.carcompany.consoleconnector.CarReservationServiceObservable;
 import com.carcompany.consoleconnector.exception.ArgumentsException;
 import com.carcompany.consoleconnector.view.ShowStatisticsView;
@@ -25,9 +25,10 @@ public class ShowStatisticsCommand extends Command {
 	 */
 	public void executeCommand(String[] arguments) {
 
-		if(arguments.length > 0 && arguments.length < 3){
-			Statistic statistic = CarReservationServiceObservable.getInstance().showStatistics(Language.valueOf(arguments[0]), ExternalPaymentServiceEnumeration.valueOf(arguments[1]));
-			
+		if (arguments.length > 0 && arguments.length < 3) {
+			ExternalPaymentStatistic statistic = CarReservationServiceObservable.getInstance().showStatistics(
+					Language.valueOf(arguments[0]), ExternalPaymentServiceEnumeration.valueOf(arguments[1]));
+
 			View view = new ShowStatisticsView(statistic);
 			view.print();
 
