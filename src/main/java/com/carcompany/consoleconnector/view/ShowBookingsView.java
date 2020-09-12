@@ -52,6 +52,9 @@ public class ShowBookingsView extends View {
 
 			System.out.println("⎣_________________________⎦");
 		}
+
+		if (this.bookings.size() == 0)
+			System.out.println("No bookings, yet.");
 	}
 
 	public void update() {

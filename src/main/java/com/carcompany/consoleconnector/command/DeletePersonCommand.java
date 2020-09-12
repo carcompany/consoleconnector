@@ -1,7 +1,7 @@
 package com.carcompany.consoleconnector.command;
 
 import com.carcompany.consoleconnector.CarReservationServiceObservable;
-import com.carcompany.consoleconnector.exception.ArgumentsException;
+import com.carcompany.consoleconnector.ConsoleWrapper;
 import com.carcompany.consoleconnector.view.DeletePersonView;
 import com.carcompany.consoleconnector.view.View;
 
@@ -12,26 +12,16 @@ import com.carcompany.consoleconnector.view.View;
  */
 public class DeletePersonCommand extends Command {
 
-	public DeletePersonCommand() {
+	public void executeCommand() throws NumberFormatException, Exception {
+		int personId = Integer.parseInt(ConsoleWrapper.getInstance().ask4Input("Person ID"));
 
+		CarReservationServiceObservable.getInstance().deletePerson(personId);
+		View view = new DeletePersonView(personId);
+		view.print();
 	}
 
-	/**
-	 * 
-	 * @param arguments
-	 * @throws Exception
-	 * @throws NumberFormatException
-	 */
-	public void executeCommand(String[] arguments) throws NumberFormatException, Exception {
-
-		if (arguments.length == 1) {
-
-			CarReservationServiceObservable.getInstance().deletePerson(Integer.parseInt(arguments[0]));
-			View view = new DeletePersonView(arguments[0]);
-			view.print();
-		} else
-			throw new ArgumentsException(
-					String.format("One argument is required. Got %s arguments.", arguments.length));
-
+	@Override
+	public String getName() {
+		return "Delete a person";
 	}
 }

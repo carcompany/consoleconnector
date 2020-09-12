@@ -18,7 +18,6 @@ public class CreatePersonView extends View {
 	}
 
 	public void print() {
-		System.out.println("–= Person CREATED =–");
 		System.out.println("ID: " + this.person.getId());
 
 		if (person instanceof NaturalPerson) {

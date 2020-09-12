@@ -13,15 +13,11 @@ public class ShowStatisticsView extends View {
 
 	public ShowStatisticsView(ExternalPaymentStatistic statistic) {
 		this.statistic = statistic;
-
 	}
 
 	public void print() {
-
-		System.out.println("–= STATISTIC =–");
-		System.out.println("SUM OF PAYMENTS: " + statistic.getPaymentSum());
-		System.out.println("SUM OF BOOKINGS: " + statistic.getBookingSum());
-
+		System.out.println("Revenue of payments:  " + statistic.getPaymentSum());
+		System.out.println("Amount of bookings:   " + statistic.getBookingSum());
 	}
 
 	public void update() {

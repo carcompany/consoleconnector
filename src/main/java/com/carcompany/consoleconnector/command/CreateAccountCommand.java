@@ -3,60 +3,54 @@ package com.carcompany.consoleconnector.command;
 import com.carcompany.carreservationservice.structure.authenticationservice.structure.credential.CredentialEnumeration;
 import com.carcompany.carreservationservice.structure.paymentservice.structure.PaymentType;
 import com.carcompany.carreservationservice.structure.paymentservice.structure.account.Account;
-import com.carcompany.carreservationservice.structure.personservice.structure.Person;
 import com.carcompany.consoleconnector.CarReservationServiceObservable;
 import com.carcompany.consoleconnector.ConsoleWrapper;
-import com.carcompany.consoleconnector.exception.ArgumentsException;
 import com.carcompany.consoleconnector.view.CreateAccountView;
 import com.carcompany.consoleconnector.view.View;
 
 public class CreateAccountCommand extends Command {
 
+	public String getName() {
+		return "Create an account";
+	}
+
 	@Override
-	public void executeCommand(String[] arguments) throws Exception {
+	public void executeCommand() throws Exception {
 
-		if (arguments.length == 2) {
+		Account account;
+		ConsoleWrapper console = ConsoleWrapper.getInstance();
 
-			Account account;
-			ConsoleWrapper console = ConsoleWrapper.getInstance();
+		int personId = Integer.parseInt(console.ask4Input("Person ID"));
 
-			String credentialType = console.ask4Input("Please specify credential type");
+		PaymentType paymentType = PaymentType
+				.valueOf(console.ask4Input("Payment type (APPLE_PAY, GOOGLE_PAY, BANK, PAYPAL)"));
+		String credentialType = console.ask4Input("Credential type (e.g. PASSWORD)");
 
-			switch (CredentialEnumeration.valueOf(credentialType)) {
-				case PASSWORD:
-					String password;
-					String password2;
-					do {
+		switch (CredentialEnumeration.valueOf(credentialType)) {
+			case PASSWORD:
 
-						password = console.ask4Password("Please enter a password for your new account");
-						password2 = console.ask4Password("Please repeat the entered password");
+				String password;
+				String password2;
 
-						if (!password.equals(password2)) {
-							System.out.println("Password does not match. Please try again");
-						}
-					} while (!password.equals(password2));
+				do {
 
-					Person person = CarReservationServiceObservable.getInstance()
-							.showPerson(Integer.parseInt(arguments[0]));
+					password = console.ask4Password("Please enter a password for your new account");
+					password2 = console.ask4Password("Please repeat the entered password");
 
-					account = CarReservationServiceObservable.getInstance().createAccount(person,
-							CredentialEnumeration.PASSWORD, password, PaymentType.valueOf(arguments[1]));
+					if (!password.equals(password2)) {
+						System.out.println("Password does not match. Please try again");
+					}
+				} while (!password.equals(password2));
 
-					View view = new CreateAccountView(account);
+				account = CarReservationServiceObservable.getInstance().createAccount(personId,
+						CredentialEnumeration.PASSWORD, password, paymentType);
 
-					view.print();
-					store(account);
+				View view = new CreateAccountView(account);
+				view.print();
 
-					break;
-
-				default:
-					System.out.println("Method not supported yet.");
-					break;
-			}
-
-		} else {
-			throw new ArgumentsException(
-					String.format("Two arguments are required. Got %s arguments.", arguments.length));
+				break;
+			default:
+				throw new Error("Method is not supported yet.");
 		}
 
 	}

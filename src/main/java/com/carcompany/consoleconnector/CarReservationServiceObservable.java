@@ -14,7 +14,6 @@ import com.carcompany.carreservationservice.structure.paymentservice.structure.P
 import com.carcompany.carreservationservice.structure.paymentservice.structure.account.Account;
 import com.carcompany.carreservationservice.structure.paymentservice.structure.exception.PaymentExecutionException;
 import com.carcompany.carreservationservice.structure.personservice.structure.Person;
-import com.carcompany.carreservationservice.structure.personservice.structure.exception.TooFewOrManyParametersForPersonCreationException;
 import com.carcompany.carreservationservice.structure.resourceservice.structure.Resource;
 import com.carcompany.carreservationservice.structure.resourceservice.structure.ResourceEnumeration;
 import com.carcompany.carreservationservice.structure.resourceservice.structure.exception.MoreThanOneDecoratableResourceException;
@@ -56,16 +55,16 @@ public class CarReservationServiceObservable extends Observable implements CarRe
 		return carReservationService.createResource(resourceEnumeration);
 	}
 
-	public Booking createBooking(Person person, Resource resource, Language language) {
+	public Booking createBooking(int personId, Resource resource, Language language) throws Exception {
 		notifySubscribers();
-		return carReservationService.createBooking(person, resource, language);
+		return carReservationService.createBooking(personId, resource, language);
 	}
 
 	@Override
-	public Account createAccount(Person person, CredentialEnumeration credentialEnumeration, Object secret,
-			PaymentType paymentType) throws TooFewOrManyParametersForPersonCreationException {
+	public Account createAccount(int personId, CredentialEnumeration credentialEnumeration, Object secret,
+			PaymentType paymentType) throws Exception {
 		notifySubscribers();
-		return carReservationService.createAccount(person, credentialEnumeration, secret, paymentType);
+		return carReservationService.createAccount(personId, credentialEnumeration, secret, paymentType);
 	}
 
 	@Override
@@ -75,10 +74,10 @@ public class CarReservationServiceObservable extends Observable implements CarRe
 	}
 
 	@Override
-	public Booking payBooking(Booking booking, PaymentType paymentType, Account account, Credential credential)
+	public Booking payBooking(int bookingId, PaymentType paymentType, int accountId, Credential credential)
 			throws AuthenticationException, PaymentExecutionException {
 		notifySubscribers();
-		return carReservationService.payBooking(booking, paymentType, account, credential);
+		return carReservationService.payBooking(bookingId, paymentType, accountId, credential);
 	}
 
 	@Override
@@ -88,14 +87,14 @@ public class CarReservationServiceObservable extends Observable implements CarRe
 	}
 
 	@Override
-	public void deletePerson(int id) throws Exception {
+	public void deletePerson(int personId) throws Exception {
 		notifySubscribers();
-		carReservationService.deletePerson(id);
+		carReservationService.deletePerson(personId);
 	}
 
 	@Override
-	public Booking showBooking(int id) {
-		return carReservationService.showBooking(id);
+	public Booking showBooking(int bookingId) {
+		return carReservationService.showBooking(bookingId);
 	}
 
 	@Override
@@ -104,7 +103,12 @@ public class CarReservationServiceObservable extends Observable implements CarRe
 	}
 
 	@Override
-	public Person showPerson(int id) throws Exception {
-		return carReservationService.showPerson(id);
+	public Person showPerson(int personId) throws Exception {
+		return carReservationService.showPerson(personId);
+	}
+
+	@Override
+	public Account showAccount(int accountId) {
+		return carReservationService.showAccount(accountId);
 	}
 }

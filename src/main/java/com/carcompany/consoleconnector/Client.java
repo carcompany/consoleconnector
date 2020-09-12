@@ -8,9 +8,8 @@ package com.carcompany.consoleconnector;
 public class Client {
 
 	public static void main(String[] args) {
-		Dispatcher dispatcher = new Dispatcher();
-		while(true) {
-			dispatcher.evaluateCommand();
+		while (true) {
+			Dispatcher.getInstance().evaluateCommand();
 		}
 	}
 

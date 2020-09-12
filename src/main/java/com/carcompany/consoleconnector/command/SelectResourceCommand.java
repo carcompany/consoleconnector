@@ -8,8 +8,8 @@ import com.carcompany.carreservationservice.structure.resourceservice.structure.
 import com.carcompany.carreservationservice.structure.resourceservice.structure.exception.MoreThanOneDecoratableResourceException;
 import com.carcompany.carreservationservice.structure.resourceservice.structure.exception.NoDecoratableResourceException;
 import com.carcompany.consoleconnector.CarReservationServiceObservable;
-import com.carcompany.consoleconnector.exception.ArgumentsException;
-import com.carcompany.consoleconnector.view.CreateResourceView;
+import com.carcompany.consoleconnector.ConsoleWrapper;
+import com.carcompany.consoleconnector.view.SelectResourceView;
 import com.carcompany.consoleconnector.view.View;
 
 /**
@@ -17,34 +17,27 @@ import com.carcompany.consoleconnector.view.View;
  * @version 1.0
  * @created 28-Aug-2020 17:10:43
  */
-public class CreateResourceCommand extends Command {
+public class SelectResourceCommand extends Command {
 
-	public void executeCommand(String[] arguments)
-			throws MoreThanOneDecoratableResourceException, NoDecoratableResourceException {
-		
+	@Override
+	public String getName() {
+		return "Select a resource";
+	}
 
+	public void executeCommand() throws MoreThanOneDecoratableResourceException, NoDecoratableResourceException {
 
 		List<ResourceEnumeration> list = new ArrayList<ResourceEnumeration>();
 
+		for (String string : ConsoleWrapper.getInstance().ask4Input("Resource (comma seperated)").split(",")) {
+			list.add(ResourceEnumeration.valueOf(string));
 
-		if( arguments.length > 0){
-			for (String string : arguments) {
-				list.add(ResourceEnumeration.valueOf(string));
-				
-			}
-			Resource resource = CarReservationServiceObservable.getInstance().createResource(list.toArray(new ResourceEnumeration[list.size()]));
-	
-			View view = new CreateResourceView(resource);
-	
-			view.print();
-			store(resource);
-		}  else {
-			throw new ArgumentsException(
-			String.format("One or more argument(s) are required. Got %s arguments.", arguments.length));
 		}
+		Resource resource = CarReservationServiceObservable.getInstance()
+				.createResource(list.toArray(new ResourceEnumeration[list.size()]));
 
+		View view = new SelectResourceView(resource);
 
-		
+		view.print();
 
 	}
 }

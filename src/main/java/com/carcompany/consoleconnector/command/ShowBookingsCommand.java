@@ -11,11 +11,13 @@ import com.carcompany.consoleconnector.view.View;
  */
 public class ShowBookingsCommand extends Command {
 
-	public ShowBookingsCommand() {
-
+	@Override
+	public String getName() {
+		return "List all bookings";
 	}
 
-	public void executeCommand(String[] arguments) {
+	@Override
+	public void executeCommand() throws Exception {
 		View view = new ShowBookingsView(CarReservationServiceObservable.getInstance().showBookings());
 		view.print();
 	}

@@ -9,21 +9,22 @@ import com.carcompany.carreservationservice.structure.bookingservice.structure.B
  */
 public class PayBookingView extends View {
 
-	private Booking paidBooking;
+	private Booking booking;
 
-	public PayBookingView(Booking paidBooking) {
-
-		this.paidBooking = paidBooking;
-
-
+	public PayBookingView(Booking booking) {
+		this.booking = booking;
 	}
 
 	public void print() {
+		System.out.println("Executing payment...");
 
-		System.out.println("–= BOOKING PAID =–");
+		try {
+			Thread.sleep(400);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 
-
-
+		System.out.printf("SUCCESS: Booking #%s got paid\n", booking.getId());
 	}
 
 	public void update() {

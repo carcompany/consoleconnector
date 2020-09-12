@@ -4,11 +4,10 @@ import java.util.ArrayList;
 
 import com.carcompany.carreservationservice.structure.bookingservice.structure.Booking;
 import com.carcompany.carreservationservice.structure.bookingservice.structure.Language;
-import com.carcompany.carreservationservice.structure.personservice.structure.Person;
 import com.carcompany.carreservationservice.structure.resourceservice.structure.Resource;
 import com.carcompany.carreservationservice.structure.resourceservice.structure.ResourceEnumeration;
 import com.carcompany.consoleconnector.CarReservationServiceObservable;
-import com.carcompany.consoleconnector.exception.ArgumentsException;
+import com.carcompany.consoleconnector.ConsoleWrapper;
 import com.carcompany.consoleconnector.view.CreateBookingView;
 import com.carcompany.consoleconnector.view.View;
 
@@ -19,8 +18,9 @@ import com.carcompany.consoleconnector.view.View;
  */
 public class CreateBookingCommand extends Command {
 
-	public CreateBookingCommand() {
-		super();
+	@Override
+	public String getName() {
+		return "Create a new booking";
 	}
 
 	/**
@@ -29,31 +29,29 @@ public class CreateBookingCommand extends Command {
 	 * @throws Exception
 	 * @throws NumberFormatException
 	 */
-	public void executeCommand(String[] arguments) throws NumberFormatException, Exception {
+	public void executeCommand() throws NumberFormatException, Exception {
 
-		if (arguments.length == 3) {
+		ConsoleWrapper console = ConsoleWrapper.getInstance();
 
-			Person person = CarReservationServiceObservable.getInstance().showPerson(Integer.parseInt(arguments[0]));
+		int personId = Integer.parseInt(console.ask4Input("Person ID"));
 
-			ArrayList<ResourceEnumeration> resourceEnumerations = new ArrayList<>();
+		ArrayList<ResourceEnumeration> resourceEnumerations = new ArrayList<>();
 
-			for (String resourceEnumerationString : arguments[1].split(",")) {
-				resourceEnumerations.add(ResourceEnumeration.valueOf(resourceEnumerationString));
-			}
-
-			Resource resource = CarReservationServiceObservable.getInstance()
-					.createResource(resourceEnumerations.toArray(ResourceEnumeration[]::new));
-
-			Language language = Language.valueOf(arguments[2]);
-
-			Booking booking = CarReservationServiceObservable.getInstance().createBooking(person, resource, language);
-
-			View view = new CreateBookingView(booking);
-
-			view.print();
-		} else {
-			throw new ArgumentsException(
-					String.format("Three arguments are required. Got %s arguments.", arguments.length));
+		for (String resourceEnumerationString : console.ask4Input("Select a resource combination (comma seperated)")
+				.split(",")) {
+			resourceEnumerations.add(ResourceEnumeration.valueOf(resourceEnumerationString));
 		}
+
+		Resource resource = CarReservationServiceObservable.getInstance()
+				.createResource(resourceEnumerations.toArray(ResourceEnumeration[]::new));
+
+		Language language = Language.valueOf(console.ask4Input("Language (GERMAN, ENGLISH)"));
+
+		Booking booking = CarReservationServiceObservable.getInstance().createBooking(personId, resource, language);
+
+		View view = new CreateBookingView(booking);
+
+		view.print();
+
 	}
 }

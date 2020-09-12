@@ -1,8 +1,6 @@
 package com.carcompany.consoleconnector;
 
 import java.io.Console;
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class ConsoleWrapper {
 
@@ -20,18 +18,13 @@ public class ConsoleWrapper {
         return consoleWrapper;
     }
 
-    public String getInput() {
-        System.out.print("Slotos@CarCompany 🚙 % ");
-        return console.readLine();
-    }
-
     public String ask4Input(String question) {
-        System.out.print(question + ": ");
+        System.out.print("\033[0;32m" + question + ": \033[0m");
         return console.readLine();
     }
 
     public String ask4Password(String question) {
-        char[] password = console.readPassword(question + ": ");
+        char[] password = console.readPassword("\033[34m" + question + ": \033[0m");
         return new String(password);
     }
 

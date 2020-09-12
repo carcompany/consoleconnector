@@ -2,9 +2,8 @@ package com.carcompany.consoleconnector.command;
 
 import com.carcompany.carreservationservice.structure.bookingservice.structure.Language;
 import com.carcompany.carreservationservice.structure.statisticsservice.structure.ExternalPaymentServiceEnumeration;
-import com.carcompany.carreservationservice.structure.statisticsservice.structure.services.ExternalPaymentStatistic;
 import com.carcompany.consoleconnector.CarReservationServiceObservable;
-import com.carcompany.consoleconnector.exception.ArgumentsException;
+import com.carcompany.consoleconnector.ConsoleWrapper;
 import com.carcompany.consoleconnector.view.ShowStatisticsView;
 import com.carcompany.consoleconnector.view.View;
 
@@ -15,27 +14,20 @@ import com.carcompany.consoleconnector.view.View;
  */
 public class ShowStatisticsCommand extends Command {
 
-	public ShowStatisticsCommand() {
-
+	@Override
+	public String getName() {
+		return "Show statistics for current month";
 	}
 
-	/**
-	 * 
-	 * @param arguments
-	 */
-	public void executeCommand(String[] arguments) {
+	@Override
+	public void executeCommand() throws Exception {
 
-		if (arguments.length > 0 && arguments.length < 3) {
-			ExternalPaymentStatistic statistic = CarReservationServiceObservable.getInstance().showStatistics(
-					Language.valueOf(arguments[0]), ExternalPaymentServiceEnumeration.valueOf(arguments[1]));
+		Language language = Language.valueOf(ConsoleWrapper.getInstance().ask4Input("Language (GERMAN, ENGLISH)"));
+		ExternalPaymentServiceEnumeration externalPaymentServiceEnumeration = ExternalPaymentServiceEnumeration.valueOf(
+				ConsoleWrapper.getInstance().ask4Input("Payment Service (APPLE_PAY, GOOGLE_PAY, BANK, PAYPAL)"));
 
-			View view = new ShowStatisticsView(statistic);
-			view.print();
-
-		} else {
-			throw new ArgumentsException(
-					String.format("Two arguments are required. Got %s arguments.", arguments.length));
-		}
-
+		View view = new ShowStatisticsView(CarReservationServiceObservable.getInstance().showStatistics(language,
+				externalPaymentServiceEnumeration));
+		view.print();
 	}
 }

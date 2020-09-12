@@ -7,20 +7,15 @@ package com.carcompany.consoleconnector.view;
  */
 public class DeletePersonView extends View {
 
-	private String identifier;
+	private int personId;
 
-	public DeletePersonView(String id) {
-
-		this.identifier = id;
-
-		
-
-
+	public DeletePersonView(int personId) {
+		this.personId = personId;
 	}
 
 	public void print() {
-		System.out.println("–= PERSON DELETED =–");
-		System.out.println("ID: " + this.identifier);
+		System.out.printf("SUCCESS: Person with id %s got deleted", personId);
+		System.out.println();
 	}
 
 	public void update() {

@@ -4,35 +4,28 @@ import com.carcompany.carreservationservice.structure.authenticationservice.stru
 import com.carcompany.carreservationservice.structure.paymentservice.structure.account.Account;
 import com.carcompany.carreservationservice.structure.personservice.structure.*;
 
-public class CreateAccountView extends View{
-
+public class CreateAccountView extends View {
 
     private Account account;
 
     public CreateAccountView(Account account) {
 
         this.account = account;
-	}
+    }
 
-	@Override
+    @Override
     public void print() {
 
-        Person person = ((PersonSubject)account.getSubject()).getPerson();
+        Person person = ((PersonSubject) account.getSubject()).getPerson();
 
+        System.out.println("Account type: " + account.getClass().getSimpleName());
 
-        System.out.println("–= ACCOUNT CREATED =–");
-        System.out.println("ACCOUNT TYPE: " + account.getClass().getSimpleName());
-        System.out.println("ACCOUNT OWNER:");
-        
-		if (person instanceof NaturalPerson) {
-			System.out.println("Firstname: " + ((NaturalPerson) person).getFirstname());
-			System.out.println("Lastname: " + ((NaturalPerson) person).getLastname());
-		} else {
-			System.out.println("Company name: " + ((LegalPerson) person).getName());
-		}
-
-
-        
+        if (person instanceof NaturalPerson) {
+            System.out.println("Firstname:  " + ((NaturalPerson) person).getFirstname());
+            System.out.println("Lastname:   " + ((NaturalPerson) person).getLastname());
+        } else {
+            System.out.println("Company name: " + ((LegalPerson) person).getName());
+        }
 
     }
 
@@ -41,5 +34,5 @@ public class CreateAccountView extends View{
         // TODO Auto-generated method stub
 
     }
-    
+
 }

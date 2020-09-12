@@ -1,6 +1,5 @@
 package com.carcompany.consoleconnector.view;
 
-import com.carcompany.consoleconnector.Clipboard;
 import com.carcompany.consoleconnector.Subscriber;
 
 /**
@@ -9,16 +8,6 @@ import com.carcompany.consoleconnector.Subscriber;
  * @created 28-Aug-2020 17:10:55
  */
 public abstract class View implements Subscriber {
-
-
-	protected Clipboard clipboard;
-
-	public View() {
-
-		this.clipboard = Clipboard.getInstance();
-
-	}
-
 	public abstract void print();
 
 	public abstract void update();
