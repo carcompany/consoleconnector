@@ -23,7 +23,7 @@ public abstract class Command {
 	public abstract void executeCommand(String[] arguments) throws Exception;
 	
 	public void store(Object object){
-		System.out.println("RESOURCE STORED AS: " + clipboard.store(object));
+		System.out.println("OBJECT STORED IN CLIPBOARD AS: " + clipboard.store(object));
 	 	System.out.println("USE THE ID AFTER THE : TO REFERENCE THE OBJECT IN COMMANDS");
 
 	}
