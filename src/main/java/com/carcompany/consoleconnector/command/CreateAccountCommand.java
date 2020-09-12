@@ -20,7 +20,7 @@ public class CreateAccountCommand extends Command {
 			Account account;
 			ConsoleWrapper console = ConsoleWrapper.getInstance();
 
-			String credentialType = console.ask4Input("Please specify credential type.");
+			String credentialType = console.ask4Input("Please specify credential type");
 
 			switch (CredentialEnumeration.valueOf(credentialType)) {
 				case PASSWORD:
