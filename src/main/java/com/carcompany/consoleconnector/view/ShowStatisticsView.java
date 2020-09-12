@@ -1,6 +1,6 @@
 package com.carcompany.consoleconnector.view;
 
-import com.carcompany.carreservationservice.structure.statisticsservice.structure.services.Statistic;
+import com.carcompany.carreservationservice.structure.statisticsservice.structure.services.ExternalPaymentStatistic;
 
 /**
  * @author Benjamin Esdor
@@ -9,9 +9,9 @@ import com.carcompany.carreservationservice.structure.statisticsservice.structur
  */
 public class ShowStatisticsView extends View {
 
-	private Statistic statistic;
+	private ExternalPaymentStatistic statistic;
 
-	public ShowStatisticsView(Statistic statistic) {
+	public ShowStatisticsView(ExternalPaymentStatistic statistic) {
 		this.statistic = statistic;
 
 	}

@@ -1,17 +1,17 @@
 package com.carcompany.consoleconnector;
 
+import java.io.Console;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class ConsoleWrapper {
 
     private static ConsoleWrapper consoleWrapper;
 
-    private Scanner console;
+    private Console console;
 
     public ConsoleWrapper() {
-
-        this.console = new Scanner(System.in);
-
+        this.console = System.console();
     }
 
     public static ConsoleWrapper getInstance() {
@@ -22,14 +22,17 @@ public class ConsoleWrapper {
 
     public String getInput() {
         System.out.print("Slotos@CarCompany 🚙 % ");
-        return console.nextLine();
+        return console.readLine();
     }
 
     public String ask4Input(String question) {
+        System.out.print(question + ": ");
+        return console.readLine();
+    }
 
-        System.out.println(question);
-        return this.getInput();
-
+    public String ask4Password(String question) {
+        char[] password = console.readPassword(question + ": ");
+        return new String(password);
     }
 
 }
