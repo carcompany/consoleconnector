@@ -38,7 +38,7 @@ public class CreateAccountCommand extends Command {
 					password2 = console.ask4Password("Please repeat the entered password");
 
 					if (!password.equals(password2)) {
-						System.out.println("Password does not match. Please try again");
+						System.out.println("Passwords did not match. Please try again");
 					}
 				} while (!password.equals(password2));
 

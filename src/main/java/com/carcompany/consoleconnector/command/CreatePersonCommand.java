@@ -14,8 +14,18 @@ import com.carcompany.consoleconnector.view.View;
 public class CreatePersonCommand extends Command {
 
 	public void executeCommand() {
-		Person person = CarReservationServiceObservable.getInstance()
-				.createPerson(ConsoleWrapper.getInstance().ask4Input("What's your name").split(" "));
+
+		String answer = ConsoleWrapper.getInstance().ask4Input("Create a natural Person (Y/n)?");
+		Person person;
+
+		if (answer.equals("n")) {
+			person = CarReservationServiceObservable.getInstance()
+					.createPerson(ConsoleWrapper.getInstance().ask4Input("What's the company's name"));
+		} else {
+			String firstname = ConsoleWrapper.getInstance().ask4Input("What's your firstname");
+			String lastname = ConsoleWrapper.getInstance().ask4Input("What's your lastname");
+			person = CarReservationServiceObservable.getInstance().createPerson(firstname, lastname);
+		}
 
 		View view = new CreatePersonView(person);
 		view.print();
