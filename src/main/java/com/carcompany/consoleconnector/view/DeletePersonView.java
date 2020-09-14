@@ -10,6 +10,7 @@ public class DeletePersonView extends View {
 	private int personId;
 
 	public DeletePersonView(int personId) {
+		super();
 		this.personId = personId;
 	}
 
@@ -18,6 +19,7 @@ public class DeletePersonView extends View {
 		System.out.println();
 	}
 
+	@Override
 	public void update() {
 
 	}

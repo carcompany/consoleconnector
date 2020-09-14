@@ -13,6 +13,7 @@ public class SelectResourceView extends View {
 	private Resource resource;
 
 	public SelectResourceView(Resource resource) {
+		super();
 		this.resource = resource;
 	}
 
@@ -35,6 +36,7 @@ public class SelectResourceView extends View {
 
 	}
 
+	@Override
 	public void update() {
 
 	}

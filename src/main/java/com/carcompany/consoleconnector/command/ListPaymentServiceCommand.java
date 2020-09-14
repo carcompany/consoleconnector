@@ -11,7 +11,7 @@ public class ListPaymentServiceCommand extends Command {
 
     @Override
     public void executeCommand() throws Exception {
-        Dispatcher.getInstance().attachContext("Payment Service", CommandEnumeration.PAY_BOOKING,
-                CommandEnumeration.CREATE_ACCOUNT);
+        Dispatcher.getInstance().attachContext("Payment Service", CommandEnumeration.CREATE_ACCOUNT,
+                CommandEnumeration.SHOW_ACCOUNT, CommandEnumeration.PAY_BOOKING);
     }
 }

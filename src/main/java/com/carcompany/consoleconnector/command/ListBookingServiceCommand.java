@@ -12,7 +12,7 @@ public class ListBookingServiceCommand extends Command {
 
     @Override
     public void executeCommand() throws Exception {
-        Dispatcher.getInstance().attachContext("Payment Service", CommandEnumeration.SHOW_BOOKINGS,
+        Dispatcher.getInstance().attachContext("Booking Service", CommandEnumeration.SHOW_BOOKINGS,
                 CommandEnumeration.CREATE_BOOKING);
     }
 

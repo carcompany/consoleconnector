@@ -12,6 +12,7 @@ public class ShowStatisticsView extends View {
 	private ExternalPaymentStatistic statistic;
 
 	public ShowStatisticsView(ExternalPaymentStatistic statistic) {
+		super();
 		this.statistic = statistic;
 	}
 
@@ -20,6 +21,7 @@ public class ShowStatisticsView extends View {
 		System.out.println("Amount of bookings:   " + statistic.getBookingSum());
 	}
 
+	@Override
 	public void update() {
 
 	}

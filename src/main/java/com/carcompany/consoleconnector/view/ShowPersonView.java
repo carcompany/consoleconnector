@@ -9,6 +9,7 @@ public class ShowPersonView extends View {
     private Person person;
 
     public ShowPersonView(Person person) {
+        super();
         this.person = person;
     }
 
@@ -26,7 +27,6 @@ public class ShowPersonView extends View {
 
     @Override
     public void update() {
-        print();
-    }
 
+    }
 }

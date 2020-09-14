@@ -15,13 +15,12 @@ public class CreateBookingView extends View {
 	private Booking booking;
 
 	public CreateBookingView(Booking booking) {
-
+		super();
 		this.booking = booking;
-
 	}
 
 	public void print() {
-		System.out.println(String.format("⎡`````````` #%s ```````````⎤", booking.getId()));
+		System.out.println(String.format("⎡````````` ID: %s `````````⎤", booking.getId()));
 
 		if (booking.getHead().getPerson() instanceof NaturalPerson) {
 			System.out.println(
@@ -37,8 +36,11 @@ public class CreateBookingView extends View {
 
 		Resource resource = booking.getBody().getResource();
 
+		Double totalPrice = 0.0;
+
 		while (resource != null) {
 			System.out.println(String.format("⎪ • %s", resource.getClass().getSimpleName()));
+			totalPrice += resource.getPrice();
 
 			if (resource instanceof ResourceDecorator) {
 				resource = ((ResourceDecorator) resource).getResource();
@@ -46,9 +48,16 @@ public class CreateBookingView extends View {
 				resource = null;
 		}
 
+		System.out.printf("⎪ Total price: %s\n", totalPrice);
+
+		System.out.println("⎪–––––––––––––––––––––––––⎪");
+
+		System.out.println(String.format("| Paid status: %s ", booking.getFooter().getPayment() != null ? "✅" : "❌"));
+
 		System.out.println("⎣_________________________⎦");
 	}
 
+	@Override
 	public void update() {
 
 	}

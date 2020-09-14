@@ -18,6 +18,7 @@ public class ShowBookingsView extends View {
 	private final Map<Integer, Booking> bookings;
 
 	public ShowBookingsView(final Map<Integer, Booking> bookings) {
+		super();
 		this.bookings = bookings;
 	}
 
@@ -25,7 +26,7 @@ public class ShowBookingsView extends View {
 		for (Map.Entry<Integer, Booking> bookingEntry : this.bookings.entrySet()) {
 			Booking booking = bookingEntry.getValue();
 
-			System.out.println(String.format("⎡`````````` #%s ```````````⎤", booking.getId()));
+			System.out.println(String.format("⎡````````` ID: %s `````````⎤", booking.getId()));
 
 			if (booking.getHead().getPerson() instanceof NaturalPerson) {
 				System.out.println(String.format("| Firstname: %s ",
@@ -41,14 +42,24 @@ public class ShowBookingsView extends View {
 
 			Resource resource = booking.getBody().getResource();
 
+			Double totalPrice = 0.0;
+
 			while (resource != null) {
 				System.out.println(String.format("⎪ • %s", resource.getClass().getSimpleName()));
+				totalPrice += resource.getPrice();
 
 				if (resource instanceof ResourceDecorator) {
 					resource = ((ResourceDecorator) resource).getResource();
 				} else
 					resource = null;
 			}
+
+			System.out.printf("⎪ Total price: %s\n", totalPrice);
+
+			System.out.println("⎪–––––––––––––––––––––––––⎪");
+
+			System.out
+					.println(String.format("| Paid status: %s ", booking.getFooter().getPayment() != null ? "✅" : "❌"));
 
 			System.out.println("⎣_________________________⎦");
 		}
@@ -57,6 +68,7 @@ public class ShowBookingsView extends View {
 			System.out.println("No bookings, yet.");
 	}
 
+	@Override
 	public void update() {
 
 	}

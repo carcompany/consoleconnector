@@ -14,6 +14,7 @@ import com.carcompany.consoleconnector.command.ListPaymentServiceCommand;
 import com.carcompany.consoleconnector.command.ListPersonServiceCommand;
 import com.carcompany.consoleconnector.command.PayBookingCommand;
 import com.carcompany.consoleconnector.command.SelectResourceCommand;
+import com.carcompany.consoleconnector.command.ShowAccountCommand;
 import com.carcompany.consoleconnector.command.ShowBookingsCommand;
 import com.carcompany.consoleconnector.command.ShowPersonCommand;
 import com.carcompany.consoleconnector.command.ShowStatisticsCommand;
@@ -88,7 +89,7 @@ public class Dispatcher {
 			} else {
 				dispatchToCommand(this.context.getMenuItems().get(itemNumber));
 			}
-		} catch (IllegalArgumentException e) {
+		} catch (IllegalArgumentException | NullPointerException e) {
 			System.out.println("\033[0;31mError: Invalid option\033[0m");
 		} catch (Exception e) {
 			System.out.println("\033[0;31mError: " + e.getMessage() + "\033[0m");
@@ -125,6 +126,9 @@ public class Dispatcher {
 				break;
 			case CREATE_ACCOUNT:
 				command = new CreateAccountCommand();
+				break;
+			case SHOW_ACCOUNT:
+				command = new ShowAccountCommand();
 				break;
 			case LIST_PERSON_SERVICE:
 				command = new ListPersonServiceCommand();
